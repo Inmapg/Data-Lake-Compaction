@@ -29,18 +29,18 @@ For a better comprehension, in this section we will explain the steps followed d
 ### ADLS connection
 Firstly, we must establish connection with ADLS. We are using Spark and also Hadoop inside a Spark Context, so we need to set the ADLS credentials onto them:
 
-    ```Scala
+    <pre><code class="language-scala">
     // Hadoop
     spark.sparkContext.hadoopConfiguration.set("fs.azure.account.key.<your-storage-account-name>.dfs.core.windows.net", "<your-data-lake-key>")
     spark.sparkContext.hadoopConfiguration.set("fs.defaultFS", "abfss://<your-file-system-name>@<your-storage-account-name>.dfs.core.windows.net")
     // Spark
     spark.conf.set("fs.azure.account.key.<your-storage-account-name>.dfs.core.windows.net", "<your-data-lake-key>")
-    ```
+    </code></pre>
     
 ### Configuration file extraction
 We will have a configuration file stored at our ADLS to which we well access using
 
-    ```Scala
+    <pre><code class="language-scala">
     val configFile = spark.read.textFile(<configuration-file-path>).collect()
-    ```
+    </code></pre>
     
